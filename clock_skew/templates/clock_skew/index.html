@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ page.title }}{% endblock title %}
+{% block body_header_title %}{{ page.title }}{% endblock body_header_title %}
+{% block head_css_page %}
+    <style type="text/css">
+        .error {
+            color: red;
+        }
+        .success {
+            font-weight: bold;
+        }
+    </style>
+{% endblock head_css_page %}
+{% block footer_javascript_page %}
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{% static 'clock_skew/js/MeasureClockSkew.js' %}"></script>
+
+    <script>
+        $(document).ready(function() {
+            $("#button").click(MeasureClockSkew.buttonPress);
+        });
+    </script>
+{% endblock footer_javascript_page %}
+
+{% block body_content %}
+    <ul id="results"></ul>
+    <button id="button">{{ page.title }}</button>
+{% endblock body_content %}
